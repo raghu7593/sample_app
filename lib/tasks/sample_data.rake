@@ -4,6 +4,7 @@ namespace :db do
     make_users
     make_microposts
     make_relationships
+    make_comments
   end
 end
 
@@ -39,4 +40,15 @@ def make_relationships
   followers      = users[3..40]
   followed_users.each { |followed| user.follow!(followed) }
   followers.each      { |follower| follower.follow!(user) }
+end
+
+def make_comments
+  users = User.all(limit: 10)
+  microposts = Micropost.all(limit: 100)
+  microposts.each do |micropost| 
+    users.each do |user|
+      content = Faker::Lorem.sentence(5)
+       micropost.comments.create!(content: content, user_id: user.id)
+    end
+  end
 end
