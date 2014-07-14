@@ -1,5 +1,5 @@
 <%= form_for(@comment, remote: true) do |f| %>
   <!-- <%= render 'shared/error_messages', object: f.object %> -->
   <%= f.hidden_field :micropost_id, :value => @micropost.id %>
-  <%= f.text_field :content, placeholder: "Write a Comment..." %>
+  <%= f.text_field :content, placeholder: "Write a Comment...", id: "comment-textfield-#{@micropost.id}" %>
 <% end %>

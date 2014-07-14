@@ -1,1 +1,1 @@
-$("#comments-content").html("<%= escape_javascript(render(@comments)) %>")
+$("#micropost-comments-<%= @micropostid %>").html("<%= escape_javascript(render(@comments)) %>")

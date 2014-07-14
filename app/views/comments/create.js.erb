@@ -1,5 +1,5 @@
-$("#comments-content").html("<%= escape_javascript(render(@comments)) %>")
-$("#comment_content").val('')
+$("#micropost-comments-<%= @micropostid %>").html("<%= escape_javascript(render(@comments)) %>")
+$("#comment-textfield-<%= @micropostid %>").val('')
 <% if !@errors.nil? %>
 	alert("<%= @errors.join %>");
 <% end %>

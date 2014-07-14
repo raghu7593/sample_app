@@ -19,7 +19,7 @@
   </section>
   <% if micropost.comments.any? %>
       <% @comments = micropost.comments %>
-      <ol class="comments" id="comments-content">
+      <ol class="comments" id="micropost-comments-<%= micropost.id %>">
         <%= render @comments %>
       </ol>
   <% end %>

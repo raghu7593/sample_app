@@ -13,6 +13,7 @@ class CommentsController < ApplicationController
       @errors = @comment.errors.full_messages
     end
     @comments = @comment.micropost.comments
+    @micropostid = @comment.micropost_id
     respond_to do |format|
       format.html { redirect_to root_url }
       format.js
@@ -21,6 +22,7 @@ class CommentsController < ApplicationController
 
   def destroy
   	@comment.destroy
+    @micropostid = @comment.micropost_id
     @comments = @comment.micropost.comments
     respond_to do |format|
       format.html { redirect_to root_url }
