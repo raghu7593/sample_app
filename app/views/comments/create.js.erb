@@ -1,2 +1,5 @@
 $("#comments-content").html("<%= escape_javascript(render(@comments)) %>")
 $("#comment_content").val('')
+<% if !@errors.nil? %>
+	alert("<%= @errors.join %>");
+<% end %>

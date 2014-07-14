@@ -8,9 +8,9 @@ class CommentsController < ApplicationController
   def create
   	@comment = current_user.comments.build(params[:comment])
     if @comment.save
-      
     else
       @feed_items = []
+      @errors = @comment.errors.full_messages
     end
     @comments = @comment.micropost.comments
     respond_to do |format|
