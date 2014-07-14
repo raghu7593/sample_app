@@ -245,3 +245,25 @@ aside {
     margin-bottom: 5px;
   }
 }
+
+/* Comments */
+.comments {
+  list-style: none;
+  margin: 10px 0 0 0;
+  background-color: #DDD;
+  margin-left: 50px;
+  li {
+    padding-left:10px;
+  }
+}
+.comment_timestamp {
+  color: $grayLight;
+  font-size: 13px;
+}
+
+/* Comment Form */
+.comment-form {
+  height: 30px;
+  overflow: hidden;
+  background-color: white;
+}
