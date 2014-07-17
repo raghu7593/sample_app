@@ -5,6 +5,9 @@ class MicropostsController < ApplicationController
   def create
     @micropost = current_user.microposts.build(params[:micropost])
     if @micropost.save
+      if eligible_points(current_user.id, "MC")
+        create_points(current_user.id, "MC")
+      end
       flash[:success] = "Micropost created!"
       redirect_to root_url
     else
@@ -15,6 +18,9 @@ class MicropostsController < ApplicationController
 
   def destroy
     @micropost.destroy
+    if eligible_points(current_user.id, "MD")
+      create_points(current_user.id, "MD")
+    end
     redirect_to root_url
   end
   

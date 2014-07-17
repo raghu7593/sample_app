@@ -4,8 +4,9 @@
     <section>
       <h1>
         <%= gravatar_for @user %>
-        <%= @user.name %>
+        <%= @user.name %>        
       </h1>
+      <h5 id="score">Score: <%= @points %></h5>
     </section>
     <section>
       <%= render 'shared/stats' %>

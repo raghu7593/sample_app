@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
 
-  before_filter :signed_in_user, only: [:index, :edit, :update]
+  before_filter :signed_in_user, only: [:index, :edit, :update, :activity]
   before_filter :correct_user,   only: [:edit, :update]
   before_filter :admin_user,     only: :destroy
 
@@ -11,6 +11,7 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @microposts = @user.microposts.paginate(page: params[:page])
+    @points = Points.where("user_id = " + params[:id].to_s).sum(:score)
   end
 
   def create
@@ -59,6 +60,21 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @users = @user.followers.paginate(page: params[:page])
     render 'show_follow'
+  end
+
+  def points
+    @points = Points.group(:user_id).sum(:score)
+    @users = User.all
+    render 'show_points'
+  end
+
+  def activity
+    @points = Points.where("user_id = " + current_user.id.to_s).order("created_at desc")
+    microposts = Micropost.where("user_id=" + current_user.id.to_s)
+    comments = Comment.where('micropost_id in (?) or user_id=' + current_user.id.to_s, microposts.map{|k| k.id})
+    followers = Relationship.where("follower_id=" + current_user.id.to_s + " or followed_id=" + current_user.id.to_s)
+    @data = (microposts + comments + followers).sort_by(&:created_at).reverse
+    render 'show_activity'
   end
 
   private

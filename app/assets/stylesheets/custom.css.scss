@@ -267,3 +267,56 @@ aside {
   overflow: hidden;
   background-color: white;
 }
+
+/* Activity */
+.activity {
+  height: 80px;
+  margin-top: 5px;
+}
+
+.type-micropost {
+  background-color: #dff0d8;
+}
+
+.type-comment {
+  background-color: #d9edf7;
+}
+
+.type-follow {
+  background-color: #fcf8e3
+}
+
+.post-type {
+  margin: 2px -17px 2px 2px;
+  padding: 2px 10px 2px 10px;
+  background-color: #B91E00;
+  color: white;
+  cursor: pointer;
+}
+
+.post-type-micropost {
+  background-color: #225374;
+}
+
+.post-type-comment {
+  background-color: #3C7226;
+}
+
+.activity-content {
+  margin-top: 17px;
+  margin-left: 170px;
+  height: 70px;
+  line-height: 50px;
+}
+
+.activity-created-at {
+  margin-top: 17px;
+  width: 140px;
+  height: 50px;
+  text-align: center;
+  vertical-align: middle;
+  line-height: 50px;       /* the same as your div height */
+  background-color: #924444;
+  color: white;
+  font-size: 13px;
+}

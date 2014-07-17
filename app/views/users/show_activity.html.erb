@@ -1,0 +1,20 @@
+<h1>All Activity</h1>
+
+<% @data.each do |obj| %>
+<div class="container-fluid activity type-<% if obj.is_a?(Micropost) %>micropost<% elsif obj.is_a?(Comment) %>comment<% elsif obj.is_a?(Relationship) %>follow<% end %>">
+    <div class="post-type pull-right post-type-<% if obj.is_a?(Micropost) %>micropost<% elsif obj.is_a?(Comment) %>comment<% elsif obj.is_a?(Relationship) %>follow<% end %>"><b>
+      <% if obj.is_a?(Micropost) %> Micropost <% elsif obj.is_a?(Comment) %> Comment <% elsif obj.is_a?(Relationship) %> Follow <% end %>
+    </b></div>
+    <div class="activity-created-at pull-left"><b><%= time_ago_in_words(obj.created_at) %></b></div>
+    <div class="activity-content">
+      <% if obj.is_a?(Micropost) %>
+        <%= gravatar_for obj.user, {size: 40} %><%= link_to obj.user.name, obj.user %> wrote a micropost:<b> <%= obj.content[0..30] %></b>
+      <% elsif obj.is_a?(Comment) %>
+        <%= gravatar_for obj.user, {size: 40} %><%= link_to obj.user.name, obj.user %> commented on your micropost:<b> <%= obj.content[0..30] %></b>
+      <% elsif obj.is_a?(Relationship) %>
+        <%= gravatar_for obj.follower, {size: 40} %><%= gravatar_for obj.followed, {size: 40} %>  
+        <%= link_to obj.follower.name, obj.follower %> is following <%= link_to obj.followed.name, obj.followed %>
+      <% end %>
+    </div>
+</div>
+<% end %>

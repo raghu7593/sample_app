@@ -8,6 +8,9 @@ class CommentsController < ApplicationController
   def create
   	@comment = current_user.comments.build(params[:comment])
     if @comment.save
+      if eligible_points(current_user.id, "CC")
+        create_points(current_user.id, "CC")
+      end
     else
       @feed_items = []
       @errors = @comment.errors.full_messages
@@ -22,6 +25,9 @@ class CommentsController < ApplicationController
 
   def destroy
   	@comment.destroy
+    if eligible_points(current_user.id, "CD")
+      create_points(current_user.id, "CD")
+    end
     @micropostid = @comment.micropost_id
     @comments = @comment.micropost.comments
     respond_to do |format|

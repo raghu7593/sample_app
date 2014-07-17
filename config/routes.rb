@@ -2,12 +2,17 @@ SampleApp::Application.routes.draw do
 
   resources :comments
 
+  namespace :users do
+    get :points
+    get :activity
+  end
 
   resources :users do
     member do
       get :following, :followers
     end
   end
+
   resources :sessions,   only: [:new, :create, :destroy]
   resources :microposts, only: [:create, :destroy]
   resources :comments, only: [:create, :destroy]
