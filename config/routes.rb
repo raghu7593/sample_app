@@ -5,6 +5,8 @@ SampleApp::Application.routes.draw do
   namespace :users do
     get :points
     get :activity
+    post :search
+    get :autocomplete_user_name#, :on => :collection
   end
 
   resources :users do

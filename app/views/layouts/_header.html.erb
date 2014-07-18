@@ -4,6 +4,11 @@
       <%= link_to "sample app", root_path, id: "logo" %>
       <nav>
         <ul class="nav pull-right">
+          <li>
+              <%= form_tag users_search_path,  :class => 'navbar-form navbar-left', :role => 'search' do %>
+               <%=  autocomplete_field_tag 'name', '', users_autocomplete_user_name_path, :placeholder => 'Search...', :id => 'search-field' %>
+              <% end %>
+          </li>
           <li><%= link_to "Home", root_path %></li>
           <li><%= link_to "Help", help_path %></li>
           <% if signed_in? %>

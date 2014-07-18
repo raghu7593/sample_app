@@ -320,3 +320,23 @@ aside {
   color: white;
   font-size: 13px;
 }
+
+/* Autocomplete */
+.ui-autocomplete {
+  background-color: #EEE;
+  width: 171px;
+  list-style: none;
+}
+
+li.ui-menu-item {
+  font-weight: bold;
+  height: 30px;
+  text-align: center;
+  line-height: 30px;
+  border-bottom: 1px solid rgb(223, 223, 223);
+  cursor: pointer;
+  text-decoration: none;
+  &:hover {
+    background-color: #d9edf7;
+  }
+}

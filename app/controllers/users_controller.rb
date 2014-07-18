@@ -4,6 +4,8 @@ class UsersController < ApplicationController
   before_filter :correct_user,   only: [:edit, :update]
   before_filter :admin_user,     only: :destroy
 
+  autocomplete :user, :name, :full => true, :extra_data => [:email]
+
   def new
   	@user = User.new
   end
@@ -75,6 +77,16 @@ class UsersController < ApplicationController
     followers = Relationship.where("follower_id=" + current_user.id.to_s + " or followed_id=" + current_user.id.to_s)
     @data = (microposts + comments + followers).sort_by(&:created_at).reverse
     render 'show_activity'
+  end
+
+  def search
+    @user = User.where("name='"+ params[:name] + "'")[0]
+    if !@user.nil?
+      redirect_to @user
+    else
+      flash[:notice] = "Requested User doesnot Exist"
+      redirect_back_or(current_user)
+    end
   end
 
   private
