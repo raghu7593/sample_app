@@ -45,9 +45,8 @@ end
 def make_comment
   k = rand(1..50)
   j = Micropost.count
-  l = rand(1..j)
   content = Faker::Lorem.sentence(5)
-  micropost = Micropost.find(l)
+  micropost = Micropost.find(j)
   micropost.comments.create!(content: content, user_id: k)
   Points.create(user_id: k, score: 3, activity: "CC")
 end
