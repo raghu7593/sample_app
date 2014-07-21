@@ -53,8 +53,8 @@ def make_comment
 end
 
 def populate
-  4000.times do
-    k = rand(1..2)
+  5000.times do
+    k = rand(1..3)
     if k==1
       make_micropost
     else
