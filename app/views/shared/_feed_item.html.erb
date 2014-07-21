@@ -17,10 +17,10 @@
         <% @comment = current_user.comments.build %>
         <%= render 'shared/comment_form' %>
   </section>
-  <% if feed_item.comments.any? %>
-      <% @comments = feed_item.comments %>
       <ol class="comments" id="micropost-comments-<%= feed_item.id %>">
-        <%= render @comments %>
+        <% if feed_item.comments.any? %>
+          <% @comments = feed_item.comments %>
+          <%= render @comments %>
+        <% end %>
       </ol>
-  <% end %>
 </li>

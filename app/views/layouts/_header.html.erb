@@ -12,6 +12,9 @@
           </li>
           <% end %>
           <li><%= link_to "Home", root_path %></li>
+          <% if !signed_in? %>
+            <li><%= link_to "Badges", badges_path %></li>
+          <% end %>
           <li><%= link_to "Help", help_path %></li>
           <% if signed_in? %>
             <li><%= link_to "points", users_points_path %></li>
@@ -38,3 +41,16 @@
     </div>
   </div>
 </header>
+<% if signed_in? %>
+  <% if points < 100 %>
+    <%= link_to image_tag("bronze.cms", alt: "Badges"), badges_path, :class => 'pos_fixed' %>
+  <% elsif points < 250 %>
+    <%= link_to image_tag("silver.cms", alt: "Badges"), badges_path, :class => 'pos_fixed' %>
+  <% elsif points < 500 %>
+    <%= link_to image_tag("gold.cms", alt: "Badges"), badges_path, :class => 'pos_fixed' %>
+  <% elsif points < 1000 %>
+    <%= link_to image_tag("platinum.cms", alt: "Badges"), badges_path, :class => 'pos_fixed' %>
+  <% else %>
+    <%= link_to image_tag("diamond.cms", alt: "Badges"), badges_path, :class => 'pos_fixed' %>
+  <% end %>
+<% end %>

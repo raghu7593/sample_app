@@ -65,7 +65,7 @@ class UsersController < ApplicationController
   end
 
   def points
-    @points = Points.group(:user_id).sum(:score)
+    @points = Points.group(:user_id).sum(:score).sort_by {|_key, value| value}.reverse
     @users = User.all
     render 'show_points'
   end

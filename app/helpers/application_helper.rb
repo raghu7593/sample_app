@@ -9,4 +9,8 @@ module ApplicationHelper
       "#{base_title} | #{page_title}"
     end
   end
+
+  def points
+  	Points.where("user_id = " + current_user.id.to_s).sum(:score)
+  end
 end

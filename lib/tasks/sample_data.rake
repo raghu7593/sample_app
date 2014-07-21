@@ -2,9 +2,9 @@ namespace :db do
   desc "Fill database with sample data"
   task populate: :environment do
     make_users
-    make_microposts
     make_relationships
-    make_comments
+    make_micropost
+    populate
   end
 end
 
@@ -14,7 +14,7 @@ def make_users
                        password: "foobar",
                        password_confirmation: "foobar")
   admin.toggle!(:admin)
-  99.times do |n|
+  49.times do |n|
     name  = Faker::Name.name
     email = "example-#{n+1}@railstutorial.org"
     password  = "password"
@@ -22,14 +22,6 @@ def make_users
                  email:    email,
                  password: password,
                  password_confirmation: password)
-  end
-end
-
-def make_microposts
-  users = User.all(limit: 6)
-  50.times do
-    content = Faker::Lorem.sentence(5)
-    users.each { |user| user.microposts.create!(content: content) }
   end
 end
 
@@ -42,13 +34,31 @@ def make_relationships
   followers.each      { |follower| follower.follow!(user) }
 end
 
-def make_comments
-  users = User.all(limit: 10)
-  microposts = Micropost.all(limit: 100)
-  microposts.each do |micropost| 
-    users.each do |user|
-      content = Faker::Lorem.sentence(5)
-       micropost.comments.create!(content: content, user_id: user.id)
+def make_micropost
+  k = rand(1..50)
+  user = User.find(k)
+  content = Faker::Lorem.sentence(5)
+  user.microposts.create!(content: content)
+  Points.create(user_id: k, score: 5, activity: "MC")
+end
+
+def make_comment
+  k = rand(1..50)
+  j = Micropost.count
+  l = rand(1..j)
+  content = Faker::Lorem.sentence(5)
+  micropost = Micropost.find(l)
+  micropost.comments.create!(content: content, user_id: k)
+  Points.create(user_id: k, score: 3, activity: "CC")
+end
+
+def populate
+  4000.times do
+    k = rand(1..2)
+    if k==1
+      make_micropost
+    else
+      make_comment
     end
   end
 end

@@ -340,3 +340,27 @@ li.ui-menu-item {
     background-color: #d9edf7;
   }
 }
+
+/* Badges */
+
+a.pos_fixed {
+    position: fixed;
+    top: 45px;
+    right: 5px;
+}
+
+.badge-type {
+  background-color: #dff0d8;
+  margin-top: 10px;
+}
+
+.badge-content {
+  line-height: 38px;
+  margin-left: 10px;
+  text-align: center;
+  font-weight: bold;
+}
+
+li.comment {
+  height: 30px;
+}

@@ -16,7 +16,7 @@ SampleApp::Application.routes.draw do
   end
 
   resources :sessions,   only: [:new, :create, :destroy]
-  resources :microposts, only: [:create, :destroy]
+  resources :microposts, only: [:create, :destroy, :show]
   resources :comments, only: [:create, :destroy]
   resources :relationships, only: [:create, :destroy]
 
@@ -29,6 +29,7 @@ SampleApp::Application.routes.draw do
   match '/help',    to: 'static_pages#help'
   match '/about',   to: 'static_pages#about'
   match '/contact', to: 'static_pages#contact'
+  match '/badges', to: 'static_pages#badges'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

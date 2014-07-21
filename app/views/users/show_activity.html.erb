@@ -8,9 +8,9 @@
     <div class="activity-created-at pull-left"><b><%= time_ago_in_words(obj.created_at) %> ago</b></div>
     <div class="activity-content">
       <% if obj.is_a?(Micropost) %>
-        <%= gravatar_for obj.user, {size: 40} %><%= link_to obj.user.name, obj.user %> wrote a micropost:<b> <%= obj.content[0..30] %></b>
+        <%= gravatar_for obj.user, {size: 40} %><%= link_to obj.user.name, obj.user %> wrote a <%= link_to "micropost", obj %>:<b> <%= obj.content[0..30] %></b>
       <% elsif obj.is_a?(Comment) %>
-        <%= gravatar_for obj.user, {size: 40} %><%= link_to obj.user.name, obj.user %> commented on your micropost:<b> <%= obj.content[0..30] %></b>
+        <%= gravatar_for obj.user, {size: 40} %><%= link_to obj.user.name, obj.user %> commented on your <%= link_to "micropost", obj.micropost %>:<b> <%= obj.content[0..30] %></b>
       <% elsif obj.is_a?(Relationship) %>
         <%= gravatar_for obj.follower, {size: 40} %><%= gravatar_for obj.followed, {size: 40} %>  
         <%= link_to obj.follower.name, obj.follower %> is following <%= link_to obj.followed.name, obj.followed %>

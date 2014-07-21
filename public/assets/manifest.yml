@@ -1,10 +1,20 @@
 ---
+bronze.cms: bronze-f59c09012586569ae8bcee09ef900c2c.cms
+bronze/index.cms: bronze-f59c09012586569ae8bcee09ef900c2c.cms
+diamond.cms: diamond-484be4c23ca36e5e58ada71d9e9600e2.cms
+diamond/index.cms: diamond-484be4c23ca36e5e58ada71d9e9600e2.cms
+gold.cms: gold-1f46d37f18d0c2e967369daa222b150a.cms
+gold/index.cms: gold-1f46d37f18d0c2e967369daa222b150a.cms
+platinum.cms: platinum-bc0a593add9bdacedab6f0f395a7d913.cms
+platinum/index.cms: platinum-bc0a593add9bdacedab6f0f395a7d913.cms
 rails.png: rails-a3386665c05a2d82f711a4aaa72d247c.png
 rails/index.png: rails-a3386665c05a2d82f711a4aaa72d247c.png
-application.js: application-3aa268e6d3cfddf5e8f01d9c99fbf4ca.js
-application/index.js: application-3aa268e6d3cfddf5e8f01d9c99fbf4ca.js
-application.css: application-aa4edd9ef98e82f014f17ab20be93db6.css
-application/index.css: application-aa4edd9ef98e82f014f17ab20be93db6.css
+silver.cms: silver-22d68538afdc9341ff0bf6139f565f70.cms
+silver/index.cms: silver-22d68538afdc9341ff0bf6139f565f70.cms
+application.js: application-f737ca644c51ca4f4bf92c43c5bf0007.js
+application/index.js: application-f737ca644c51ca4f4bf92c43c5bf0007.js
+application.css: application-681173af8b21e384e148d17c79a1fc5a.css
+application/index.css: application-681173af8b21e384e148d17c79a1fc5a.css
 jquery-ui/animated-overlay.gif: jquery-ui/animated-overlay-602eee4c79a4796b02bb6442948c9e28.gif
 jquery-ui/animated-overlay/index.gif: jquery-ui/animated-overlay-602eee4c79a4796b02bb6442948c9e28.gif
 jquery-ui/ui-bg_flat_0_aaaaaa_40x100.png: jquery-ui/ui-bg_flat_0_aaaaaa_40x100-7d1197a52442bc56fcad60d0390f4b32.png

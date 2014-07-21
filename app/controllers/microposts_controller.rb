@@ -1,5 +1,5 @@
 class MicropostsController < ApplicationController
-  before_filter :signed_in_user, only: [:create, :destroy]
+  before_filter :signed_in_user, only: [:create, :destroy, :show]
   before_filter :correct_user,   only: :destroy
 
   def create
@@ -22,6 +22,10 @@ class MicropostsController < ApplicationController
       create_points(current_user.id, "MD")
     end
     redirect_to root_url
+  end
+
+  def show
+    @micropost = Micropost.find(params[:id])
   end
   
   def correct_user
